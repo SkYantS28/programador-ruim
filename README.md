@@ -1,191 +1,153 @@
-# programador-ruim
+# 🐍 Programador Ruim
 
-O seu amigo programador desenvolveu um Sistema de Gerenciamento Escolar em Javascript.
+## 📚 Sistema de Gerenciamento Escolar
 
-Você foi contratado para reformular o código do seu amigo, mas na linguagem Python, mas cuidado... o seu amigo parece ter cometido alguns deslizes... boa atividade!
+Projeto desenvolvido a partir de um **Sistema de Gerenciamento Escolar originalmente escrito em JavaScript**.
 
-Código:
+O objetivo da atividade é **reformular o código para Python**, corrigindo os problemas existentes na implementação original e aplicando conceitos de **Programação Orientada a Objetos (POO)**.
 
+## 🎯 Objetivo
 
-class Pessoa {
-    constructor(nome, idade, cpf) {
-        nome === nome;
-        idade === idade;
-        cpf === cpf;
-    }
+A aplicação permite gerenciar informações básicas de uma escola através de um sistema executado pelo terminal.
 
-    exibirInformacoes() {
-        console.log(`Nome: ${this.nome}, Idade: ${idade}, CPF: ${cpf}`);
-    }
-}
+O sistema possibilita:
 
-class Aluno extends Pessoa {
-    constructor(nome, idade, cpf, matricula) {
-        super(nome, idade, cpf);
-        this.matricula = matricula;
-        this.disciplinas = [];
-    }
+* 👨‍🎓 Adicionar alunos;
+* 👨‍🏫 Adicionar professores;
+* 📚 Adicionar disciplinas;
+* 📋 Exibir alunos cadastrados;
+* 📋 Exibir professores cadastrados;
+* 📋 Exibir disciplinas cadastradas;
+* 🚪 Encerrar o sistema.
 
-    adicionarDisciplina(disciplina) {
-        this.disciplina.push(disciplina);
-    }
+## 🧩 Estrutura do projeto
 
-    exibirInformacoes() {
-        super.exibirInformacoes();
-        console.log(`Matrícula: ${this.matricula}`);
-        console.log("Disciplinas:");
-        this.disciplinas.forEach((disciplina) => {
-            console.log(` - ${disciplina.nome}`);
-        });
-    }
-}
+O projeto é dividido em dois arquivos Python:
 
-class Professor extends Pessoa {
-    constructor(nome, idade, cpf, salario) {
-        super(nome, idade, cpf);
-        this.salario = salario;
-    }
+```text
+programador-ruim/
+│
+├── programador_ruim.py
+├── programa_programador_ruim.py
+└── README.md
+```
 
-    exibirInformacoes() {
-        super.exibirInformacoes();
-        console.log(`Salário: ${this.salario}`);
-    }
-}
+### `programa_programador_ruim.py`
 
-class Disciplina {
-    constructor(nome, codigo, professor) {
-        this.nome = nome;
-        this.codigo = codigo;
-        this.professor = professor;
-        this.alunos = [];
-    }
+Contém as classes responsáveis pela estrutura do sistema:
 
-    adicionarAluno(aluno) {
-        this.alunos.add(aluno);
-    }
+* `Pessoa`
+* `Aluno`
+* `Professor`
+* `Disciplina`
+* `Escola`
 
-    exibirInformacoes() {
-        console.log(`Disciplina: ${this.nome}, Código: ${codigo}`);
-        console.log(`Professor: ${this.professor.nome}`);
-        console.log("Alunos matriculados:");
-        this.alunos.forEach((aluno) => {
-            console.log(` - ${aluno.nome}`);
-        });
-    }
-}
+### `programador_ruim.py`
 
-class Escola {
-    constructor(nome) {
-        this.nome = nome;
-        this.alunos = [];
-        this.professores = [];
-        this.disciplinas = [];
-    }
+Contém o **menu principal** e a interação com o usuário através do terminal.
 
-    adicionarAluno(aluno) {
-        this.alunos.push(aluno);
-    }
+## 🏗️ Conceitos de POO utilizados
 
-    adicionarProfessor(professor) {
-        this.professores.push(professor);
-    }
+### `Pessoa`
 
-    adicionarDisciplina(disciplina) {
-        this.disciplina.push(disciplina);
-    }
+Classe base que armazena informações comuns:
 
-    exibirAlunos() {
-        console.log("Alunos matriculados:");
-        this.alunos.forEach((aluno) => {
-            aluno.exibirInformacoes();
-        });
-    }
+* Nome
+* Idade
+* CPF
 
-    exibirProfessores() {
-        console.log("Professores cadastrados:");
-        this.professores.forEach((professor) => {
-            professor.exibirInformacoes();
-        });
-    }
+### `Aluno`
 
-    exibirDisciplinas() {
-        console.log("Disciplinas oferecidas:");
-        this.disciplinas.forEach((disciplina) => {
-            disciplina.exibirInformacoes();
-        });
-    }
-}
+Herda da classe `Pessoa` e adiciona informações específicas do aluno:
 
-// Funções auxiliares
-function criarAluno() {
-    let nome = prompt("Nome do aluno: ");
-    let idade = prompt("Idade do aluno: ");
-    let cpf = prompt("CPF do aluno: ");
-    let matricula = prompt("Matrícula do aluno: ");
-    let aluno = new Aluno(nome, idade, cpf, matricula);
-    return aluno;
-}
+* Matrícula
+* Disciplinas
 
-function criarProfessor() {
-    let nome = prompt("Nome do professor: ");
-    let idade = prompt("Idade do professor: ");
-    let cpf = prompt("CPF do professor: ");
-    let salario = parseFloat(prompt("Salário do professor: "));
-    let professor = new Professor(nome, idade, cpf, salario);
-    return professor;
-}
+### `Professor`
 
-function criarDisciplina(professores) {
-    let nome = prompt("Nome da disciplina: ");
-    let codigo = prompt("Código da disciplina: ");
-    let opcao = parseInt(prompt("Escolha o professor pelo índice: ")) - 1;
-    if (opcao < 0 || opcao >= professores.length) {
-        console.log("Professor inválido!");
-        return;
-    }
-    let disciplina = new Disciplina(nome, codigo, professores[opcao]);
-    return disciplina;
-}
+Herda da classe `Pessoa` e adiciona:
 
-// Inicialização do sistema
-let escola = new Escola("Escola de Javascript");
+* Salário
 
-// Menu principal
-while (true) {
-    console.log("\n--- Sistema de Gerenciamento Escolar ---");
-    console.log("1. Adicionar aluno");
-    console.log("2. Adicionar professor");
-    console.log("3. Adicionar disciplina");
-    console.log("4. Exibir alunos");
-    console.log("5. Exibir professores");
-    console.log("6. Exibir disciplinas");
-    console.log("0. Sair");
+### `Disciplina`
 
-    let opcao = parseInt(prompt("Escolha uma opção: "));
+Armazena:
 
-    if (opcao === 1) {
-        let aluno = criarAluno();
-        escola.adicionarAluno(aluno);
-    } else if (opcao === 2) {
-        let professor = criarProfessor();
-        escola.adicionarProfessor(professor);
-    } else if (opcao === 3) {
-        if (escola.professores.length === 0) {
-            console.log("Não há professores cadastrados.");
-        } else {
-            let disciplina = criarDisciplina(escola.professores);
-            escola.adicionarDisciplina(disciplina);
-        }
-    } else if (opcao === 4) {
-        escola.exibirAlunos();
-    } else if (opcao === 5) {
-        escola.exibirProfessores();
-    } else if (opcao === 6) {
-        escola.exibirDisciplinas();
-    } else if (opcao === 0) {
-        console.log("Saindo do sistema...");
-        break;
-    } else {
-        console.log("Opção inválida! Tente novamente.");
-    }
-}
+* Nome
+* Código
+* Professor responsável
+* Alunos matriculados
+
+### `Escola`
+
+Responsável por administrar:
+
+* Alunos
+* Professores
+* Disciplinas
+
+## 🔄 Funcionamento
+
+Ao executar o programa, é apresentado um menu no terminal:
+
+```text
+--- Sistema de Gerenciamento Escolar ---
+
+0. Sair
+1. Adicionar aluno
+2. Adicionar professor
+3. Adicionar disciplina
+4. Exibir alunos
+5. Exibir professores
+6. Exibir disciplinas
+```
+
+O usuário escolhe uma opção e o sistema executa a operação correspondente.
+
+Para cadastrar uma disciplina, é necessário que exista pelo menos um professor cadastrado. O sistema apresenta os professores disponíveis para que o usuário escolha o responsável pela disciplina.
+
+## 🛠️ Tecnologias utilizadas
+
+* Python 3
+* Programação Orientada a Objetos (POO)
+* Terminal/Console
+
+## ▶️ Como executar
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/SkYantS28/programador-ruim.git
+```
+
+Entre na pasta:
+
+```bash
+cd programador-ruim
+```
+
+Execute o programa:
+
+```bash
+python programador_ruim.py
+```
+
+## 📌 Objetivo acadêmico
+
+Este projeto foi desenvolvido como atividade acadêmica para praticar **Programação Orientada a Objetos em Python**, trabalhando conceitos como:
+
+* Classes e objetos;
+* Herança;
+* Construtores;
+* Métodos;
+* Encapsulamento de dados;
+* Relacionamento entre classes;
+* Listas de objetos;
+* Entrada e saída de dados;
+* Estruturas condicionais e de repetição.
+
+## 👩‍💻 Desenvolvido por
+
+**Sky Crizosti**
+
+Estudante de Engenharia de Software.
